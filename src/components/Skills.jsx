@@ -50,60 +50,46 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-padding relative">
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1 }}
-            className="inline-block text-indigo-400 text-sm font-semibold tracking-[0.25em] uppercase mb-4 px-5 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/5"
-          >
-            Skills
-          </motion.span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-['Space_Grotesk'] mt-3">
+          <span className="text-indigo-400 text-sm font-semibold tracking-[0.25em] uppercase">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-['Space_Grotesk'] mt-2">
             My <span className="gradient-text">Tech Stack</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {skillCategories.map((category, catIdx) => (
             <motion.div
               key={catIdx}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: catIdx * 0.15 }}
-              className="glass-card rounded-3xl p-8 group relative overflow-hidden"
+              className="glass-card rounded-3xl p-7"
             >
-              {/* Card glow effect */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
-                <span className="text-2xl">{category.icon}</span>
+              <h3 className="text-lg font-bold text-white mb-6 flex items-center justify-center gap-3">
+                <span className="text-xl">{category.icon}</span>
                 <span>{category.title}</span>
-                <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent ml-2" />
               </h3>
-
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIdx) => (
-                  <div key={skillIdx} className="group/skill">
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-300 group-hover/skill:text-white transition-colors">{skill.name}</span>
-                      <span className="text-sm text-indigo-400 font-medium">{skill.level}%</span>
+                  <div key={skillIdx}>
+                    <div className="flex justify-between mb-1.5">
+                      <span className="text-sm font-medium text-gray-300">{skill.name}</span>
+                      <span className="text-sm text-indigo-400">{skill.level}%</span>
                     </div>
-                    <div className="h-2.5 bg-white/5 rounded-full overflow-hidden relative">
+                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1.5, delay: 0.5 + catIdx * 0.15 + skillIdx * 0.1, ease: [0.4, 0, 0.2, 1] }}
-                        className={`h-full rounded-full bg-gradient-to-r ${skill.color} relative`}
-                      >
-                        <div className="absolute inset-0 bg-white/20 animate-shimmer" />
-                      </motion.div>
+                        className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
+                      />
                     </div>
                   </div>
                 ))}

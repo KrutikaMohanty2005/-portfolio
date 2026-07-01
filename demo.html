@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Demo Recording Helper</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a1a; color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+    .controls {
+      position: fixed; top: 20px; right: 20px; z-index: 9999;
+      display: flex; gap: 10px;
+    }
+    .controls button {
+      padding: 12px 24px; border: none; border-radius: 12px;
+      font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+    }
+    #startBtn {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;
+    }
+    #startBtn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
+    #stopBtn {
+      background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2) !important;
+    }
+    .status {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+      padding: 12px 24px; border-radius: 12px; font-size: 13px; z-index: 9999;
+      border: 1px solid rgba(99,102,241,0.3);
+    }
+    .timer { color: #818cf8; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="startBtn" onclick="startRecording()">Start Auto-Scroll Demo</button>
+    <button id="stopBtn" onclick="stopRecording()">Stop</button>
+  </div>
+  <div class="status" id="status">Click "Start" to begin the auto-scroll demo. Use Win+G to record your screen.</div>
+
+  <iframe src="/" id="portfolio" style="width:100vw; height:100vh; border:none;"></iframe>
+
+  <script>
+    let scrollInterval;
+    let currentSection = 0;
+    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'services', 'contact'];
+    let sectionIndex = 0;
+
+    function startRecording() {
+      document.getElementById('startBtn').textContent = 'Recording...';
+      document.getElementById('startBtn').style.background = '#ef4444';
+      document.getElementById('status').innerHTML = 'Auto-scrolling... Press <span class="timer">Win+G</span> to open Xbox Game Bar and record.';
+
+      const iframe = document.getElementById('portfolio');
+      iframe.onload = function() {
+        scrollToNext();
+      };
+      if (iframe.contentDocument) {
+        scrollToNext();
+      }
+    }
+
+    function scrollToNext() {
+      const iframe = document.getElementById('portfolio');
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+      if (sectionIndex >= sections.length) {
+        sectionIndex = 0;
+      }
+
+      const target = doc.getElementById(sections[sectionIndex]);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('status').innerHTML = `Section: <span class="timer">${sections[sectionIndex].toUpperCase()}</span> (${sectionIndex + 1}/${sections.length})`;
+      }
+
+      sectionIndex++;
+      scrollInterval = setTimeout(scrollToNext, 3500);
+    }
+
+    function stopRecording() {
+      clearTimeout(scrollInterval);
+      document.getElementById('startBtn').textContent = 'Start Auto-Scroll Demo';
+      document.getElementById('startBtn').style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
+      sectionIndex = 0;
+      document.getElementById('status').innerHTML = 'Demo stopped. You can now upload the recording to LinkedIn!';
+    }
+  </script>
+</body>
+</html>

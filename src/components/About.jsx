@@ -24,7 +24,7 @@ export default function About() {
 
   return (
     <section id="about" className="section-padding relative">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -37,15 +37,16 @@ export default function About() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Photo */}
+        {/* Centered single column layout */}
+        <div className="flex flex-col items-center">
+          {/* Photo - centered */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center"
+            className="mb-10"
           >
-            <div className="relative w-80 h-96 rounded-3xl overflow-hidden group">
+            <div className="relative w-64 h-72 rounded-3xl overflow-hidden group mx-auto">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentPhoto}
@@ -58,19 +59,13 @@ export default function About() {
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-              {/* Nav arrows */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               <button onClick={prevPhoto} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
                 <FiChevronLeft size={18} />
               </button>
               <button onClick={nextPhoto} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
                 <FiChevronRight size={18} />
               </button>
-
-              {/* Dots */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 {photos.map((_, i) => (
                   <button
@@ -85,11 +80,12 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Content - centered */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center max-w-xl"
           >
             <h3 className="text-2xl font-bold text-white mb-4">
               BTech CST Student & <span className="gradient-text">Developer</span>
@@ -100,13 +96,13 @@ export default function About() {
               I enjoy building web apps and exploring machine learning with Java, Python, and modern frameworks.
             </p>
 
-            <div className="flex items-center gap-2 text-sm text-gray-500 mb-8">
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-6">
               <FiMapPin size={14} className="text-indigo-400" />
               <span>Bhubaneswar, India</span>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            {/* Tags - centered */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
               {['React', 'Java', 'Python', 'ML', 'Web Dev'].map((tag) => (
                 <span key={tag} className="px-3 py-1 text-xs font-medium rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                   {tag}
@@ -114,8 +110,8 @@ export default function About() {
               ))}
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-4 gap-3">
+            {/* Stats - centered */}
+            <div className="grid grid-cols-4 gap-3 max-w-md mx-auto">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}

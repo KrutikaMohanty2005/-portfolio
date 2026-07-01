@@ -19,18 +19,25 @@ export default function Navbar({ darkMode, setDarkMode }) {
   const [active, setActive] = useState('home')
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      const sections = navLinks.map(l => l.href.slice(1))
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i])
-        if (el && el.getBoundingClientRect().top <= 150) {
-          setActive(sections[i])
-          break
-        }
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          const sections = navLinks.map(l => l.href.slice(1))
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i])
+            if (el && el.getBoundingClientRect().top <= 150) {
+              setActive(sections[i])
+              break
+            }
+          }
+          ticking = false
+        })
+        ticking = true
       }
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -39,6 +46,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'glass py-3 shadow-lg shadow-black/20'
@@ -88,6 +96,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
             whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setDarkMode(!darkMode)}
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             className={`p-2.5 rounded-xl transition-all duration-300 ${
               darkMode
                 ? 'bg-white/10 hover:bg-white/20 text-yellow-400'
@@ -108,6 +117,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
             className={`md:hidden p-2 rounded-lg ${
               darkMode ? 'text-white' : 'text-gray-900'
             }`}

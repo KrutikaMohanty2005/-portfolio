@@ -8,13 +8,19 @@ import Experience from './components/Experience'
 import Services from './components/Services'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
+import CTA from './components/CTA'
 import Footer from './components/Footer'
+import VideoOverlay from './components/VideoOverlay'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode')
+    return saved !== null ? JSON.parse(saved) : true
+  })
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode)
+    localStorage.setItem('darkMode', JSON.stringify(darkMode))
   }, [darkMode])
 
   return (
@@ -34,7 +40,9 @@ function App() {
         <Services />
         <Testimonials />
         <Contact />
+        <CTA />
         <Footer />
+        <VideoOverlay />
       </div>
     </div>
   )

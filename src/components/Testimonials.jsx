@@ -36,7 +36,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="section-padding relative">
-      <div className="max-w-3xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -54,7 +54,7 @@ export default function Testimonials() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden">
+          <div className="glass-card rounded-3xl p-10 text-center relative overflow-hidden max-w-2xl mx-auto">
             <FiMessageCircle className="absolute top-6 left-6 text-indigo-500/20" size={50} />
 
             <AnimatePresence mode="wait">
@@ -86,6 +86,7 @@ export default function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={prev}
+              aria-label="Previous testimonial"
               className="p-2.5 rounded-xl glass text-gray-400 hover:text-white hover:bg-white/10 transition-all"
             >
               <FiChevronLeft size={18} />
@@ -95,6 +96,7 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === current ? 'bg-indigo-400 w-6' : 'bg-white/20 w-2 hover:bg-white/40'
                   }`}
@@ -105,6 +107,7 @@ export default function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={next}
+              aria-label="Next testimonial"
               className="p-2.5 rounded-xl glass text-gray-400 hover:text-white hover:bg-white/10 transition-all"
             >
               <FiChevronRight size={18} />

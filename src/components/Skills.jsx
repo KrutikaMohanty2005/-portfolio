@@ -50,7 +50,8 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-padding relative">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -63,7 +64,7 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {skillCategories.map((category, catIdx) => (
             <motion.div
               key={catIdx}

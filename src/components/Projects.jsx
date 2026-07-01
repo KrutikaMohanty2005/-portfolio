@@ -6,8 +6,8 @@ import { FiGithub } from 'react-icons/fi'
 const projects = [
   {
     title: 'House Price Prediction',
-    description: 'ML model that predicts house prices using regression algorithms. Built with Python, scikit-learn, and Jupyter Notebook.',
-    tags: ['Python', 'ML', 'Jupyter', 'Regression'],
+    description: 'ML model that predicts house prices using regression algorithms. Achieved high accuracy with feature engineering and data visualization using Python, scikit-learn, and Jupyter Notebook.',
+    tags: ['Python', 'ML', 'Jupyter', 'Regression', 'Pandas'],
     github: 'https://github.com/KrutikaMohanty2005/HOUSE_PRICE_PREDICTION',
     emoji: '🏠',
     gradient: 'from-blue-500 to-cyan-500',
@@ -15,8 +15,8 @@ const projects = [
   },
   {
     title: 'Purple Neon Calculator',
-    description: 'Responsive calculator with modern purple neon UI, smooth animations, and basic arithmetic operations.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'UI/UX'],
+    description: 'Responsive calculator with modern purple neon UI, smooth animations, keyboard support, and clean arithmetic operations. Fully responsive across all devices.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'UI/UX', 'Responsive'],
     github: 'https://github.com/KrutikaMohanty2005/Purple-Neon-Calculator',
     emoji: '🔢',
     gradient: 'from-purple-500 to-pink-500',
@@ -24,8 +24,8 @@ const projects = [
   },
   {
     title: 'Portfolio Website',
-    description: 'Premium animated portfolio with React, Tailwind CSS, Framer Motion, glassmorphism UI, and particle backgrounds.',
-    tags: ['React', 'Tailwind', 'Framer Motion', 'Responsive'],
+    description: 'Premium animated portfolio with React, Tailwind CSS, Framer Motion, glassmorphism UI, and particle backgrounds. Built with modern web technologies.',
+    tags: ['React', 'Tailwind', 'Framer Motion', 'Responsive', 'Vite'],
     github: 'https://github.com/KrutikaMohanty2005/-portfolio',
     emoji: '💻',
     gradient: 'from-indigo-500 to-purple-500',
@@ -45,7 +45,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section-padding relative">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -78,7 +78,7 @@ export default function Projects() {
         </div>
 
         {/* Projects grid - centered */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
             {filtered.map((project, i) => (
               <motion.div

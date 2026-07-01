@@ -24,7 +24,7 @@ export default function About() {
 
   return (
     <section id="about" className="section-padding relative">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -60,10 +60,10 @@ export default function About() {
                 />
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <button onClick={prevPhoto} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
+              <button onClick={prevPhoto} aria-label="Previous photo" className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
                 <FiChevronLeft size={18} />
               </button>
-              <button onClick={nextPhoto} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
+              <button onClick={nextPhoto} aria-label="Next photo" className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-all opacity-0 group-hover:opacity-100">
                 <FiChevronRight size={18} />
               </button>
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -71,6 +71,7 @@ export default function About() {
                   <button
                     key={i}
                     onClick={() => setCurrentPhoto(i)}
+                    aria-label={`Go to photo ${i + 1}`}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === currentPhoto ? 'bg-white w-6' : 'bg-white/40 w-1.5 hover:bg-white/60'
                     }`}
@@ -93,7 +94,7 @@ export default function About() {
 
             <p className="text-gray-400 leading-relaxed mb-6">
               I'm Krutika Mohanty, a passionate Computer Science & Technology student at Trident Academy of Technology, Bhubaneswar.
-              I enjoy building web apps and exploring machine learning with Java, Python, and modern frameworks.
+              I enjoy building web apps and exploring machine learning with Java, Python, and modern frameworks. Currently open to internships and software developer opportunities.
             </p>
 
             <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-6">

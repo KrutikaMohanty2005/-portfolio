@@ -26,7 +26,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-padding relative">
-      <div className="max-w-4xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -73,47 +73,63 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl mx-auto"
+          className="max-w-2xl mx-auto"
         >
           <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="sr-only">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formState.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="sr-only">Your Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="subject" className="sr-only">Subject</label>
               <input
                 type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formState.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formState.email}
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                value={formState.subject}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm"
               />
             </div>
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              value={formState.subject}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              value={formState.message}
-              onChange={handleChange}
-              required
-              rows={4}
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm resize-none"
-            />
+            <div>
+              <label htmlFor="message" className="sr-only">Your Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                value={formState.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all text-sm resize-none"
+              />
+            </div>
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}

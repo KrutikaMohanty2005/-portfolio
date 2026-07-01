@@ -1,16 +1,74 @@
-# React + Vite
+# Krutika Mohanty | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A premium animated developer portfolio built with React, Tailwind CSS, and Framer Motion. Features glassmorphism UI, particle backgrounds, smooth animations, and a responsive design.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Particle animation background with interactive connections
+- Smooth scroll-triggered animations
+- Glassmorphism UI with gradient accents
+- Dark/Light mode toggle
+- Fully responsive design
+- Typing animation effect
+- Photo carousel in About section
+- Skills progress bars with animated fills
+- Project showcase with filtering
+- Timeline-based experience section
+- Testimonials carousel
+- Contact form with validation
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - UI framework
+- **Tailwind CSS 4** - Utility-first CSS
+- **Framer Motion** - Animations
+- **Vite** - Build tool
+- **React Icons** - Icon library
+- **React Intersection Observer** - Scroll animations
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+# Clone the repository
+git clone https://github.com/KrutikaMohanty2005/-portfolio.git
+
+# Navigate to project directory
+cd -portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Hero.jsx          # Landing section with typing animation
+│   ├── About.jsx         # Bio with photo carousel
+│   ├── Skills.jsx        # Technical skills with progress bars
+│   ├── Projects.jsx      # Featured projects with filtering
+│   ├── Experience.jsx    # Timeline-based experience
+│   ├── Services.jsx      # Services offered
+│   ├── Testimonials.jsx  # Testimonials carousel
+│   ├── Contact.jsx       # Contact form and info
+│   ├── CTA.jsx           # Call-to-action section
+│   ├── Navbar.jsx        # Navigation with scroll tracking
+│   ├── Footer.jsx        # Footer with social links
+│   └── VideoOverlay.jsx  # Video overlay component
+├── App.jsx               # Main app component
+├── index.css             # Global styles and animations
+└── main.jsx              # Entry point
+```
+
+## Author
+
+**Krutika Mohanty**
+- GitHub: [@KrutikaMohanty2005](https://github.com/KrutikaMohanty2005)
+- LinkedIn: [krutika-mohanty](https://www.linkedin.com/in/krutika-mohanty-1319862a7)

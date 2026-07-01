@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiTwitter, FiHeart, FiArrowUp } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiHeart, FiArrowUp } from 'react-icons/fi'
 
 const links = [
   { name: 'Home', href: '#home' },
@@ -51,7 +51,6 @@ export default function Footer() {
               {[
                 { icon: <FiGithub size={18} />, href: 'https://github.com/KrutikaMohanty2005' },
                 { icon: <FiLinkedin size={18} />, href: 'https://www.linkedin.com/in/krutika-mohanty-1319862a7' },
-                { icon: <FiTwitter size={18} />, href: '#' },
               ].map((s, i) => (
                 <motion.a
                   key={i}

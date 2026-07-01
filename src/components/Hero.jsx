@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiTwitter, FiArrowDown } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi'
 
 const roles = [
   'Full-Stack Developer',
@@ -18,6 +18,9 @@ function ParticleField() {
     const ctx = canvas.getContext('2d')
     let animId
     let particles = []
+    let isVisible = true
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -25,6 +28,12 @@ function ParticleField() {
     }
     resize()
     window.addEventListener('resize', resize)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0 }
+    )
+    observer.observe(canvas)
 
     class Particle {
       constructor() {
@@ -54,11 +63,19 @@ function ParticleField() {
       }
     }
 
-    for (let i = 0; i < 100; i++) {
+    const count = prefersReducedMotion ? 0 : window.innerWidth < 768 ? 40 : 70
+    for (let i = 0; i < count; i++) {
       particles.push(new Particle())
     }
 
+    const connectionDist = 140
+    const connectionDistSq = connectionDist * connectionDist
+
     const animate = () => {
+      if (!isVisible) {
+        animId = requestAnimationFrame(animate)
+        return
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => { p.update(); p.draw() })
 
@@ -66,12 +83,13 @@ function ParticleField() {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
           const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 140) {
+          const distSq = dx * dx + dy * dy
+          if (distSq < connectionDistSq) {
+            const dist = Math.sqrt(distSq)
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - dist / 140)})`
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - dist / connectionDist)})`
             ctx.lineWidth = 0.6
             ctx.stroke()
           }
@@ -84,6 +102,7 @@ function ParticleField() {
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
+      observer.disconnect()
     }
   }, [])
 
@@ -100,8 +119,8 @@ function TypingAnimation() {
     const timeout = isDeleting ? 40 : 80
 
     if (!isDeleting && displayText === role) {
-      setTimeout(() => setIsDeleting(true), 2000)
-      return
+      const timer = setTimeout(() => setIsDeleting(true), 2000)
+      return () => clearTimeout(timer)
     }
 
     if (isDeleting && displayText === '') {
@@ -130,6 +149,8 @@ function TypingAnimation() {
 }
 
 export default function Hero() {
+  const [imgError, setImgError] = useState(false)
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleField />
@@ -157,6 +178,9 @@ export default function Hero() {
           <span className="inline-block px-6 py-2.5 rounded-full glass text-sm font-medium text-indigo-400 mb-8 border border-indigo-500/20">
             Welcome to my digital universe
           </span>
+          <span className="inline-block ml-3 px-4 py-1.5 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold border border-green-500/20 animate-pulse">
+            Open to Internships
+          </span>
         </motion.div>
 
         {/* Profile Picture */}
@@ -174,18 +198,18 @@ export default function Hero() {
               </div>
               {/* Avatar */}
               <div className="absolute inset-2 rounded-full bg-gradient-to-br from-indigo-500/30 to-purple-500/30 flex items-center justify-center overflow-hidden">
+                  {!imgError ? (
                   <img
                   src="/photo2.jpg"
                   alt="Krutika Mohanty"
                   className="w-full h-full object-cover rounded-full"
-                  onError={(e) => {
-                    e.target.style.display = 'none'
-                    e.target.nextSibling.style.display = 'flex'
-                  }}
+                  onError={() => setImgError(true)}
                 />
-                <div className="hidden w-full h-full items-center justify-center text-6xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20">
+                ) : (
+                <div className="w-full h-full flex items-center justify-center text-6xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20">
                   👩‍💻
                 </div>
+                )}
               </div>
               {/* Floating status dot */}
               <div className="absolute bottom-2 right-2 w-5 h-5 bg-green-400 rounded-full border-4 border-[#0a0a1a] z-10">
@@ -228,7 +252,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 1 }}
           className="text-gray-500 max-w-xl mx-auto mb-12 text-sm md:text-base"
         >
-          BTech CST Student at Trident Academy of Technology
+          BTech CST Student at Trident Academy of Technology | Building clean, modern web experiences
         </motion.p>
 
         <motion.div
@@ -267,7 +291,6 @@ export default function Hero() {
           {[
             { icon: <FiGithub size={20} />, href: 'https://github.com/KrutikaMohanty2005', label: 'GitHub' },
             { icon: <FiLinkedin size={20} />, href: 'https://www.linkedin.com/in/krutika-mohanty-1319862a7', label: 'LinkedIn' },
-            { icon: <FiTwitter size={20} />, href: '#', label: 'Twitter' },
           ].map((social, i) => (
             <motion.a
               key={i}

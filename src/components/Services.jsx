@@ -46,7 +46,7 @@ export default function Services() {
 
   return (
     <section id="services" className="section-padding relative">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -59,7 +59,7 @@ export default function Services() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {services.map((service, i) => (
             <motion.div
               key={i}

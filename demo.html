@@ -43,7 +43,7 @@
   <script>
     let scrollInterval;
     let currentSection = 0;
-    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'services', 'contact'];
+    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'services', 'testimonials', 'contact'];
     let sectionIndex = 0;
 
     function startRecording() {
@@ -75,7 +75,7 @@
       }
 
       sectionIndex++;
-      scrollInterval = setTimeout(scrollToNext, 3500);
+      scrollInterval = setTimeout(scrollToNext, 5000);
     }
 
     function stopRecording() {

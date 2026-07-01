@@ -37,7 +37,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="section-padding relative">
-      <div className="max-w-3xl mx-auto px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -51,24 +51,24 @@ export default function Experience() {
         </motion.div>
 
         {/* Centered timeline */}
-        <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-purple-500/50 to-transparent" />
+        <div className="relative max-w-3xl mx-auto">
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/50 via-purple-500/50 to-transparent -translate-x-1/2" />
 
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="relative mb-10 ml-14"
+              className="relative mb-10 flex justify-center"
             >
-              <div className="absolute -left-[2.75rem] top-5 w-3.5 h-3.5 rounded-full bg-indigo-500 border-4 border-[#0a0a1a] z-10">
+              <div className="absolute left-1/2 top-5 w-3.5 h-3.5 rounded-full bg-indigo-500 border-4 border-[#0a0a1a] z-10 -translate-x-1/2">
                 {exp.current && (
                   <div className="absolute inset-0 rounded-full bg-indigo-500 animate-ping opacity-30" />
                 )}
               </div>
 
-              <div className="glass-card rounded-2xl p-6">
+              <div className="glass-card rounded-2xl p-6 w-full max-w-lg mx-auto">
                 <div className="flex items-center gap-2 mb-2">
                   <FiBriefcase className="text-indigo-400" size={14} />
                   <span className="text-sm text-indigo-400 font-medium">{exp.company}</span>

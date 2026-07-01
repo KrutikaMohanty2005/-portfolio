@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Services from './components/Services'
+import VideoSection from './components/VideoSection'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import CTA from './components/CTA'
@@ -38,6 +39,7 @@ function App() {
         <Projects />
         <Experience />
         <Services />
+        <VideoSection />
         <Testimonials />
         <Contact />
         <CTA />

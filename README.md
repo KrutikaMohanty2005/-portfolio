@@ -45,6 +45,14 @@ npm run dev
 npm run build
 ```
 
+### Local Network Access
+
+To allow others on the same WiFi/network to check your portfolio:
+
+1. Run `npm run dev`
+2. Look for the **Network** URL in the terminal (e.g., `http://192.168.x.x:5173/`)
+3. Share that URL with others on the same network
+
 ## Project Structure
 
 ```

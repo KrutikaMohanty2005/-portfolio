@@ -21,6 +21,8 @@ const skillCategories = [
       { name: 'Node.js', level: 65, color: 'from-green-400 to-green-600' },
       { name: 'Tailwind CSS', level: 82, color: 'from-teal-400 to-cyan-500' },
       { name: 'Express.js', level: 60, color: 'from-gray-400 to-gray-600' },
+      { name: 'Flask', level: 65, color: 'from-gray-400 to-gray-500' },
+      { name: 'Streamlit', level: 60, color: 'from-red-400 to-orange-500' },
     ],
   },
   {

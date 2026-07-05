@@ -26,8 +26,8 @@ const experiences = [
     company: 'Academic & Personal',
     period: '2024 - Present',
     location: 'Remote',
-    description: 'Developed ML models including House Price Prediction using Python, scikit-learn, and Jupyter Notebook.',
-    tags: ['Python', 'Scikit-learn', 'Jupyter', 'Pandas'],
+    description: 'Developed ML models including House Price Prediction and Medical Insurance Cost Prediction using Python, scikit-learn, Flask, and Streamlit. Achieved 89.47% R² Score with Random Forest.',
+    tags: ['Python', 'Scikit-learn', 'Flask', 'Streamlit', 'Pandas'],
     current: true,
   },
 ]

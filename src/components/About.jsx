@@ -6,7 +6,7 @@ import { FiMapPin, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 const stats = [
   { value: '10+', label: 'Projects' },
   { value: '5+', label: 'Languages' },
-  { value: '2+', label: 'Repos' },
+  { value: '3+', label: 'Repos' },
   { value: 'BTech', label: 'CST' },
 ]
 

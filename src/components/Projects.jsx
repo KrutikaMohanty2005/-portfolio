@@ -31,6 +31,15 @@ const projects = [
     gradient: 'from-indigo-500 to-purple-500',
     category: 'Web Dev',
   },
+  {
+    title: 'Medical Insurance Cost Prediction',
+    description: 'ML project predicting insurance costs using 22 features with 5 models including Neural Networks. Achieved 89.47% R² Score with Random Forest. Features Flask & Streamlit web apps with user authentication.',
+    tags: ['Python', 'Scikit-learn', 'Flask', 'Streamlit', 'Neural Networks', 'Pandas'],
+    github: 'https://github.com/KrutikaMohanty2005/Medical-Insurance-Cost-Prediction',
+    emoji: '🏥',
+    gradient: 'from-emerald-500 to-teal-500',
+    category: 'ML/AI',
+  },
 ]
 
 const filters = ['All', 'Web Dev', 'ML/AI']
